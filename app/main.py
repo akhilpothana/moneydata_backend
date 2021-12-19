@@ -63,7 +63,6 @@ def getLinkToken():
 def get_access_token():
     global access_token
     global item_id
-    global transfer_id
     public_token = request.form['public_token']
     try:
         exchange_request = ItemPublicTokenExchangeRequest(
