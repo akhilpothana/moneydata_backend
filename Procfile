@@ -1,1 +1,1 @@
-web: gunicorn moneydata_createlinktoken:app
+web: gunicorn moneydata-createlinktoken:app
