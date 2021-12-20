@@ -81,7 +81,7 @@ def get_access_token():
 def get_balance():
     try:
         request = AccountsBalanceGetRequest(
-            access_token=access_token
+            access_token='access-sandbox-4ff5ecae-bac0-4f75-952f-bd8781d2a58f'
         )
         response = client.accounts_balance_get(request)
         print(response.to_dict())
