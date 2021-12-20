@@ -16,6 +16,7 @@ from plaid.model.account_subtypes import AccountSubtypes
 from plaid.model.account_subtype import AccountSubtype
 from plaid.model.link_token_create_request_user import LinkTokenCreateRequestUser
 from plaid.model.item_public_token_exchange_request import ItemPublicTokenExchangeRequest
+from plaid.model.accounts_balance_get_request import AccountsBalanceGetRequest
 
 app = Flask(__name__)
 
@@ -73,3 +74,18 @@ def get_access_token():
         return jsonify(exchange_response.to_dict())
     except plaid.ApiException as e:
         return json.loads(e.body)
+
+# Retrieve real-time balance data for each of an Item's accounts
+# https://plaid.com/docs/#balance
+@app.route('/api/balance', methods=['GET'])
+def get_balance():
+    try:
+        request = AccountsBalanceGetRequest(
+            access_token=access_token
+        )
+        response = client.accounts_balance_get(request)
+        print(response.to_dict())
+        return jsonify(response.to_dict())
+    except plaid.ApiException as e:
+        # error_response = format_error(e)
+        return jsonify(e)
