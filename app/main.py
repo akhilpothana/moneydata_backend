@@ -88,4 +88,5 @@ def get_balance():
         return jsonify(response.to_dict())
     except plaid.ApiException as e:
         # error_response = format_error(e)
+        return 'error'
         return jsonify(e)
