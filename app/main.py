@@ -57,7 +57,7 @@ def getLinkToken():
     )   
     response = client.link_token_create(request)
     link_token = response['link_token']
-    return f'<p>{link_token}</p>'
+    return f'{link_token}'
 
 @app.route('/api/set_access_token', methods=['POST'])
 def get_access_token():
