@@ -60,7 +60,7 @@ def getLinkToken():
     link_token = response['link_token']
     return f'{link_token}'
 
-@app.route('/api/set_access_token', methods=['POST'])
+@app.route('/swapPublicTokenForAccesstoken', methods=['POST'])
 def get_access_token():
     global access_token
     global item_id
@@ -77,7 +77,7 @@ def get_access_token():
 
 # Retrieve real-time balance data for each of an Item's accounts
 # https://plaid.com/docs/#balance
-@app.route('/api/balance', methods=['GET'])
+@app.route('/balance', methods=['GET'])
 def get_balance():
     try:
         request = AccountsBalanceGetRequest(
@@ -87,6 +87,4 @@ def get_balance():
         print(response.to_dict())
         return jsonify(response.to_dict())
     except plaid.ApiException as e:
-        # error_response = format_error(e)
-        return 'error'
         return jsonify(e)
