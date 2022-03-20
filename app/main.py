@@ -80,8 +80,10 @@ def get_access_token():
 @app.route('/balance', methods=['GET'])
 def get_balance():
     try:
+        print("ACCESS_TOKEN:")
+        print(access_token)
         request = AccountsBalanceGetRequest(
-            access_token='access-sandbox-4ff5ecae-bac0-4f75-952f-bd8781d2a58f'
+            access_token=access_token // 'access-sandbox-4ff5ecae-bac0-4f75-952f-bd8781d2a58f'
         )
         response = client.accounts_balance_get(request)
         print(response.to_dict())
